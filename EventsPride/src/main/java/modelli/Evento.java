@@ -2,6 +2,7 @@ package modelli;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,6 +23,7 @@ private Esito esito;
 private String foto;
 private String stato;
 @OneToMany(fetch = FetchType.EAGER)
+@Column(name="utenti")
 private List<Utente> listaUtenti;
 public Evento() {
 	

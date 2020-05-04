@@ -5,12 +5,17 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Utente {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	
 
 	private String username;
 	private String nome;
@@ -21,7 +26,8 @@ public class Utente {
 	private String foto;
 	@Column(columnDefinition = "boolean default false")
 	private boolean active;
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany
+	@Column(name="eventi")
 	private List<Evento> listaEventi;
 
 
@@ -49,6 +55,14 @@ public class Utente {
 		this.nome = nome;
 	}
 
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public String getCognome() {
 		return cognome;
