@@ -56,8 +56,9 @@ table, th, td {
   </c:forEach>
 
 </table>
-<form action="<%= request.getContextPath() %>/admin/menuAdmin.jsp">
-  <button type="submit" class="btn btn-primary btn-lg btn-block" style="width:500px; height:50px;" >Indietro</button>
-  </form>
+	<form action="controllo" method="post">
+		<button type="submit" class="btn btn-primary btn-lg btn-block"
+			name="azione" value="4" style="width: 500px; height: 50px;">Indietro</button>
+	</form>
 </body>
 </html>

@@ -1,9 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+
 
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletException;
@@ -16,16 +14,13 @@ import javax.servlet.http.HttpSession;
 import modelli.Utente;
 import utility.GestioneDB;
 
-
 @WebServlet(name = "controllo", urlPatterns = { "/controllo" })
 
 public class ControlloAzione extends HttpServlet {
 
-	
-	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+
 		int azione = Integer.parseInt(req.getParameter("azione"));
 		try {
 			GestioneDB gestioneDB = new GestioneDB((EntityManagerFactory) getServletContext().getAttribute("emf"));
@@ -34,20 +29,28 @@ public class ControlloAzione extends HttpServlet {
 
 			switch (azione) {
 			case 0: {
-				         req.setAttribute("tipo", req.getParameter("tipo"));
-				 		 req.getRequestDispatcher("registrazione.jsp").forward(req, resp);
-
+				req.setAttribute("tipo", req.getParameter("tipo"));
+				req.getRequestDispatcher("registrazione.jsp").forward(req, resp);
+				break;
 			}
 			case 1: {
 				sessione.invalidate();
 				req.getRequestDispatcher("login.jsp").forward(req, resp);
+				break;
 
-			} case 2: {
+			}
+			case 2: {
 				req.getRequestDispatcher("admin/aggiungiEvento.jsp").forward(req, resp);
+				break;
 			}
 			case 3: {
 				req.setAttribute("listaEventi", gestioneDB.mostraEventiAperti());
 				req.getRequestDispatcher("admin/chiudiEvento.jsp").forward(req, resp);
+				break;
+			}
+			case 4: {
+				req.getRequestDispatcher("admin/menuAdmin.jsp").forward(req, resp);
+				break;
 			}
 			}
 
@@ -56,11 +59,10 @@ public class ControlloAzione extends HttpServlet {
 		}
 
 	}
-	
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("messaggio", "Devi prima accedere");
-		req.getRequestDispatcher("login.jsp").forward(req, resp);
+		req.getRequestDispatcher(req.getContextPath() + "login.jsp").forward(req, resp);
 	}
 }

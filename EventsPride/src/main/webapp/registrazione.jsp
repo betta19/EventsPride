@@ -51,9 +51,17 @@
         <button class="btn btn-primary btn-lg btn-block" type="submit"style="width:500px; height:50px;">Registrati</button><br>
      </form>
              
+<% String tipo=(String)request.getAttribute("tipo");
+   if(("utente").equals(tipo)) {%>
 <form action="login.jsp">
   <button type="submit" class="btn btn-primary btn-lg btn-block" style="width:500px; height:50px;" >Indietro</button>  
   </form>
+ <%}else{ %>
+ <form action="controllo" method="post">
+  <button type="submit" class="btn btn-primary btn-lg btn-block" name="azione" value="4" style="width:500px; height:50px;" >Indietro</button>
+ </form>
+  <%} %>
+  
   
   </div>
 </body>
