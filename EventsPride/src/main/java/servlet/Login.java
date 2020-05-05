@@ -13,7 +13,7 @@ import modelli.Utente;
 import utility.Crittografia;
 import utility.GestioneDB;
 
-@WebServlet(name = "login", urlPatterns = { "/login" })
+@WebServlet(name = "login", urlPatterns = { "/login", "/"})
 public class Login extends HttpServlet {
 
 	@Override
