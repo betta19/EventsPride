@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -23,6 +24,8 @@ public class Utente {
 	private String mail;
 	private String password;
 	private String tipo;
+	@Lob
+	@Column(columnDefinition = "LONGBLOB NOT NULL")
 	private String foto;
 	@Column(columnDefinition = "boolean default false")
 	private boolean active;

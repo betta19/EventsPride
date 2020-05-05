@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -20,6 +21,8 @@ private String nome;
 private String dataApertura;
 @OneToOne
 private Esito esito;
+@Lob
+@Column(columnDefinition = "LONGBLOB NOT NULL")
 private String foto;
 private String stato;
 @OneToMany(fetch = FetchType.EAGER)
