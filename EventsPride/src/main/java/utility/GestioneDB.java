@@ -58,9 +58,9 @@ public class GestioneDB {
 	}
 	
 	
-	public boolean rimuoviEventoById(long IdEvento) {
+	public boolean rimuoviEventoById(long idEvento) {
 
-		Evento e = em.find(Evento.class, IdEvento);
+		Evento e = em.find(Evento.class, idEvento);
 
 		em.getTransaction().begin();
 		em.remove(e);
@@ -71,7 +71,20 @@ public class GestioneDB {
 	public List<Evento> mostraEventi() {
 		return em.createQuery("SELECT evento FROM Evento evento", Evento.class).getResultList();
 	}
-
-
-
+	public List<Evento> mostraEventiAperti() {
+		Query query = em.createQuery("SELECT evento FROM Evento evento WHERE evento.stato= :stato", Evento.class);
+		query.setParameter("stato", "aperto");
+		  try {
+		   return query.getResultList();
+		  } catch (NoResultException e) {
+		   return null;
+		  }
+	}
+	public Evento cambioStato (long idEvento) {
+		Evento e = em.find(Evento.class, idEvento);
+	      em.getTransaction().begin();
+	        e.setStato("chiuso");
+	        em.getTransaction().commit();
+	        return e;
+	}
 }

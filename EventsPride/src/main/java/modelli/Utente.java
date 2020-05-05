@@ -1,15 +1,13 @@
 package modelli;
 
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
+
 
 @Entity
 public class Utente {
@@ -29,9 +27,6 @@ public class Utente {
 	private String foto;
 	@Column(columnDefinition = "boolean default false")
 	private boolean active;
-	@OneToMany
-	@Column(name="eventi")
-	private List<Evento> listaEventi;
 
 
 	public Utente() {
@@ -125,17 +120,4 @@ public class Utente {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-
-
-	public List<Evento> getListaEventi() {
-		return listaEventi;
-	}
-
-
-	public void setListaEventi(List<Evento> listaEventi) {
-		this.listaEventi = listaEventi;
-	}
-
-	
-	
 }

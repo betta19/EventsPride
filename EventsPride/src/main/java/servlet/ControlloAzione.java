@@ -42,9 +42,13 @@ public class ControlloAzione extends HttpServlet {
 				sessione.invalidate();
 				req.getRequestDispatcher("login.jsp").forward(req, resp);
 
-				break;
+			} case 2: {
+				req.getRequestDispatcher("admin/aggiungiEvento.jsp").forward(req, resp);
 			}
-	
+			case 3: {
+				req.setAttribute("listaEventi", gestioneDB.mostraEventiAperti());
+				req.getRequestDispatcher("admin/chiudiEvento.jsp").forward(req, resp);
+			}
 			}
 
 		} catch (Exception e) {

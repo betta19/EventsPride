@@ -85,6 +85,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <!-- Page Content -->
 <div class="w3-padding-large" id="main">
   <!-- Header/Home -->
+  
   <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
     <h1 class="w3-jumbo"><span class="w3-hide-small">Il tuo Dio </span><c:out value = "${sessionScope.Utente.getUsername()}"/></h1>
     <p>Creatore di Eventi.</p>
@@ -92,6 +93,18 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   </header>
 
   <!-- About Section -->
+  <%
+		String mess = (String) request.getAttribute("messaggio");
+		if (mess != null) {
+	%>
+	<h4>
+		<%=mess%>
+	</h4>
+
+
+	<%
+		}
+	%> <br>
   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
     <h2 class="w3-text-light-grey">My Name</h2>
     <hr style="width:200px" class="w3-opacity">
@@ -127,7 +140,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
         <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
           <li class="w3-dark-grey w3-xlarge w3-padding-32">Crea Eventi</li>
           <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-white w3-padding-large w3-hover-black">Crea</button>
+          <form action="controllo" method="post">
+            <button class="w3-button w3-white w3-padding-large w3-hover-black" type="submit" name="azione" value="2">Crea</button>
+            </form>
           </li>
         </ul>
       </div>
@@ -136,7 +151,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
         <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
           <li class="w3-dark-grey w3-xlarge w3-padding-32">Chiudi Evento</li>
           <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-white w3-padding-large w3-hover-black">Chiudi</button>
+            <form action="controllo" method="post">
+            <button class="w3-button w3-white w3-padding-large w3-hover-black"type="submit" name="azione" value="3">Chiudi</button>
+            </form>
           </li>
         </ul>
       </div>
