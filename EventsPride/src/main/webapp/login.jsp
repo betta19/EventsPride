@@ -22,6 +22,7 @@ input[type=text], input[type=password] {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  
 }
 
 
@@ -35,17 +36,14 @@ input[type=text], input[type=password] {
 /* Center the image and position the close button */
 .imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
+ 
   position: relative;
 }
 
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
-
-.container {
+.container1 {
   padding: 16px;
+  background-color: #292929;
+  color: white;
 }
 
 span.psw {
@@ -81,7 +79,7 @@ span.psw {
   position: absolute;
   right: 25px;
   top: 0;
-  color: #000;
+  color: white;
   font-size: 35px;
   font-weight: bold;
 }
@@ -118,7 +116,7 @@ span.psw {
      width: 100%;
   }
 }
-body, h1, h2, h3, h4, h5, h6 {
+body, h1,  h3, h4, h5, h6 {
 	font-family: "Montserrat", sans-serif
 }
 
@@ -142,7 +140,7 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 .button {
-	background-color: #4CAF50; /* Green */
+	background-color: #4CAF50; 
 	border: none;
 	color: none;
 	padding: 16px 32px;
@@ -162,40 +160,74 @@ body, h1, h2, h3, h4, h5, h6 {
 
 .button4:hover {
 	background-color: black;
+	
+}
+.bg {
+  /* The image used */
+  background-image: url("https://s1.1zoom.me/b5838/364/Fireworks_Black_background_537060_1920x1080.jpg");
+  
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 </style>
 <meta charset="ISO-8859-1">
 <title>Login</title>
 </head>
-<body class="w3-black" >
+<body class="bg">
+
+		<div  class="container">
+  <div  class="row">
+  <div class="col"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <%  String messaggio = (String) request.getAttribute("messaggio"); 
 	if (messaggio != null ){
 		%>
-		<h2><%=messaggio%></h2>
+		<h2><p class="text-md-center text-white"><%=messaggio%></p></h2>
 		<%}%>
-		
-		
+		</div>
+			</div>
+		<div class="row">
+		<div class="col-sm align-self-end">	
+		<div class="float-right">
    <button class="w3-button w3-white w3-padding-large w3-hover-black" onclick="document.getElementById('id01').style.display='block'" style="width:150px; height:50px;margin: auto">Login</button>
-	
-	
+	<br>
+	</div>
+				</div>
+				<div class="col-sm align-self-end">
+					<div class="float-left">
+<form action="controllo" method="post">
+ <input type="hidden" id="tipo" name="tipo" value="utente">
+
+<button class="w3-button w3-white w3-padding-large w3-hover-black" type="submit" name="azione" value="0"style="width:150px; height:50px;margin: auto">Registrati</button>
+</form>
+	</div>
+				</div>
+			</div>
+		</div>
 	
 	<div id="id01" class="modal">
   
   <form class="modal-content animate" action="login" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
+     
     </div>
 
-    <div class="container">
+    <div class="container1">
       <label for="user"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="user" required>
 
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" required>
-        
-      <button class="btn-default" type="submit">Login</button>
-      <button class="btn-danger" type="button" onclick="document.getElementById('id01').style.display='none'" >Annulla</button>
+        <br><br>
+      <button class="btn btn-success" type="submit">Login</button>
+      <button class="btn btn-danger" type="button" onclick="document.getElementById('id01').style.display='none'" >Annulla</button>
       
       
     </div>
@@ -221,11 +253,6 @@ window.onclick = function(event) {
 </script>	
 		
 
-<br>
-<form action="controllo" method="post">
- <input type="hidden" id="tipo" name="tipo" value="utente">
 
-<button class="w3-button w3-white w3-padding-large w3-hover-black" type="submit" name="azione" value="0"style="width:150px; height:50px;margin: auto">Registrati</button>
-</form>
 </body>
 </html>

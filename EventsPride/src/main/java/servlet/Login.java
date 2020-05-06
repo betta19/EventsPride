@@ -13,7 +13,7 @@ import modelli.Utente;
 import utility.Crittografia;
 import utility.GestioneDB;
 
-@WebServlet(name = "login", urlPatterns = { "/login", "/"})
+@WebServlet(name = "login", urlPatterns = { "/login"})
 public class Login extends HttpServlet {
 
 	@Override
@@ -32,7 +32,7 @@ public class Login extends HttpServlet {
 	       p.setPassword(Crittografia.encrypt(req.getParameter("password")));
 			Utente utente = gestioneDB.controlloUtente(p);
 			if (utente == null) {
-				req.setAttribute("messaggio", "Credenziali invalide");
+				req.setAttribute("messaggio", "Credenziali non valide");
 				req.getRequestDispatcher("login.jsp").forward(req, resp);
 			} else if (utente.isActive()) {
 				if (utente.getTipo().equals("utente")) {
