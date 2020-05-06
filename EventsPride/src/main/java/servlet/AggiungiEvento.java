@@ -51,6 +51,7 @@ public class AggiungiEvento extends HttpServlet {
 		evento.setNome(req.getParameter("nome"));
 		evento.setStato("aperto");
 		db.aggiungiEvento(evento);
+		req.setAttribute("listaEventi", db.mostraEventi());
 		req.setAttribute("messaggio", "Evento aggiunto con successo!");
 		req.getRequestDispatcher("/admin/menuAdmin.jsp").forward(req, resp);
 	}

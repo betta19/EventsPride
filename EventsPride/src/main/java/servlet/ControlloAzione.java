@@ -49,7 +49,20 @@ public class ControlloAzione extends HttpServlet {
 				break;
 			}
 			case 4: {
+				req.setAttribute("listaEventi", gestioneDB.mostraEventi());
 				req.getRequestDispatcher("admin/menuAdmin.jsp").forward(req, resp);
+				break;
+			}
+			case 5: {
+				gestioneDB.rimuoviEvento(Long.parseLong(req.getParameter("idEvento")));
+				req.setAttribute("messaggio", "Evento rimosso");
+				req.setAttribute("listaEventi", gestioneDB.mostraEventi());
+				req.getRequestDispatcher("admin/menuAdmin.jsp").forward(req, resp);
+				break;
+			}
+			case 6: {
+				req.setAttribute("evento", gestioneDB.findEvento(Long.parseLong(req.getParameter("idEvento"))));
+				req.getRequestDispatcher("admin/info.jsp").forward(req, resp);
 				break;
 			}
 			}

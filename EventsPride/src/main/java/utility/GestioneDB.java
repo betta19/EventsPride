@@ -8,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
+import modelli.Esito;
 import modelli.Evento;
 import modelli.Utente;
 
@@ -83,5 +84,28 @@ public class GestioneDB {
 		e.setStato("chiuso");
 		em.getTransaction().commit();
 		return e;
+	}
+
+	public void salvaEsito(long id, List<Utente> l) {
+		Evento evento = em.find(Evento.class, id);
+		Esito esito = new Esito();
+		esito.setEvento(evento);
+		esito.setUtentiScelti(l);
+		em.getTransaction().begin();
+		em.persist(esito);
+		evento.setEsito(esito);
+		em.getTransaction().commit();
+	}
+	public boolean rimuoviEvento(long id) {
+
+        Evento e = em.find(Evento.class, id);
+
+        em.getTransaction().begin();
+        em.remove(e);
+        em.getTransaction().commit();
+        return true;
+    }
+	public Evento findEvento(long idEvento) {
+		return  em.find(Evento.class, idEvento);
 	}
 }

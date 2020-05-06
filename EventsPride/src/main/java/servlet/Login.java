@@ -43,6 +43,7 @@ public class Login extends HttpServlet {
 				} else {
 					HttpSession sessione = req.getSession();
 					sessione.setAttribute("Utente", utente);
+					req.setAttribute("listaEventi", gestioneDB.mostraEventi());
 					req.getRequestDispatcher("admin/menuAdmin.jsp").forward(req, resp);
 				}
 			} else {
