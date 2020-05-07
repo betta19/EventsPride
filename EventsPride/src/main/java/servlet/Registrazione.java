@@ -60,11 +60,19 @@ public class Registrazione extends HttpServlet {
 				gestioneDB.aggiungiUtente(utente);
 				Email.sendEmail(utente.getMail(), "Conferma Mail",
 						generaLinkValidazioneUtente(utente));
-				req.setAttribute("messaggio", "utente aggiunto,controllare l'email");
-				req.getRequestDispatcher("login.jsp").forward(req, resp);
+				
+				if (req.getParameter("tipo").equals("utente")) {
+					req.setAttribute("messaggio", "Utente aggiunto, controllare l'email");
+					req.getRequestDispatcher("login.jsp").forward(req, resp);
+				} else {
+					req.setAttribute("messaggio", "Admin aggiunto");
+					req.setAttribute("listaEventi", gestioneDB.mostraEventi());
+					req.getRequestDispatcher("admin/menuAdmin.jsp").forward(req, resp);
+				}
+				
 			}
 		} catch (MessagingException e) {
-			req.setAttribute("messaggio", "utente Non aggiunto");
+			req.setAttribute("messaggio", "Utente non aggiunto");
 			req.getRequestDispatcher("login.jsp").forward(req, resp);
 			e.printStackTrace();
 		}

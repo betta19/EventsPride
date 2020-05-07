@@ -14,7 +14,8 @@
 			<p>Registrazione</p>
 		</div>
 		<div class="contenitore">
-		<form action="registrazione" method="post" enctype="multipart/form-data">				<p>Inserisci le tue credenziali</p>
+		<form action="registrazione" method="post" enctype="multipart/form-data">				
+		<p>Inserisci le tue credenziali</p>
 					<p>
 						<label>USERNAME</label><br>
 							<input type="text" name="user" class="user" placeholder="Username">
@@ -32,10 +33,6 @@
 							<input type="email" name="email" class="email" placeholder="email@gmail.com">
 					</p>
 					<p>
-						<label>ETA</label><br>
-							<input type="number" name="eta" class="eta" placeholder="18" step="1" min="1">
-					</p>
-					<p>
 						<label>PASSWORD</label><br>
 							<input type="Password" name="password" class="password" placeholder="Password">
 					</p>
@@ -43,7 +40,10 @@
 						<label>IMMAGINE PROFILO</label><br>
 							<input type="file" name="image" class="image" placeholder="Inserisci immagine">
 					</p>
-        <button class="btn btn-info btn-lg btn-block" type="submit"style="width:200px; height:30px;margin:auto;">Registrati</button><br><br>			</form>
+        <button class="btn btn-info btn-lg btn-block" type="submit"style="width:200px; height:30px;margin:auto;">Registrati</button><br><br>			
+         <input type="hidden" id="tipo" name="tipo" value="<c:out value="${tipo}" />">
+        
+        </form>
 			
 			<% String tipo=(String)request.getAttribute("tipo");
    if(("utente").equals(tipo)) {%>
