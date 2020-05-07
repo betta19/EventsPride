@@ -77,6 +77,15 @@ public class GestioneDB {
 			return new ArrayList<Evento>();
 		}
 	}
+		public List<Evento> mostraEventiChiusi() {
+			Query query = em.createQuery("SELECT evento FROM Evento evento WHERE evento.stato= :stato", Evento.class);
+			query.setParameter("stato", "chiuso");
+			try {
+				return query.getResultList();
+			} catch (NoResultException e) {
+				return new ArrayList<Evento>();
+			}
+	}
 
 	public Evento cambioStato(long idEvento) {
 		Evento e = em.find(Evento.class, idEvento);
@@ -107,5 +116,37 @@ public class GestioneDB {
     }
 	public Evento findEvento(long idEvento) {
 		return  em.find(Evento.class, idEvento);
+	}
+	public List<Evento> controlloIscrizione (Utente utente, List<Evento> eventi) {
+		List<Evento> lista = new ArrayList<>();
+		for (Evento evento : eventi) {
+			if (!evento.getListaUtenti().contains(utente)) {
+				lista.add(evento);
+			}
+		} return lista;
+	}
+	public List<Evento> eventiPartecipati (Utente utente, List<Evento> eventi) {
+		List<Evento> lista = new ArrayList<>();
+		for (Evento evento : eventi) {
+			if (evento.getListaUtenti().contains(utente)) {
+				lista.add(evento);
+			}
+		} return lista;
+	}
+	public List<Evento> eventiVinti (Utente utente, List<Evento> eventi) {
+		List<Evento> lista = new ArrayList<>();
+		for (Evento evento : eventi) {
+			if (evento.getEsito().getUtentiScelti().contains(utente)) {
+				lista.add(evento);
+			}
+		} return lista;
+	} 
+	public boolean aggiungiPartecipante (long idEvento, Utente utente) {
+		Evento e = findEvento(idEvento);
+		em.getTransaction().begin();
+	//	em.persist(utente);
+		e.getListaUtenti().add(utente);
+		em.getTransaction().commit();
+		return true;
 	}
 }

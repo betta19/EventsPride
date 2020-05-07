@@ -38,7 +38,9 @@ public class Login extends HttpServlet {
 				if (utente.getTipo().equals("utente")) {
 					HttpSession sessione = req.getSession();
 					sessione.setAttribute("Utente", utente);
-					
+					req.setAttribute("listaEventiAperti", gestioneDB.controlloIscrizione(utente, gestioneDB.mostraEventiAperti()));
+					req.setAttribute("eventiPartecipati", gestioneDB.eventiPartecipati(utente, gestioneDB.mostraEventi()));
+					req.setAttribute("eventiVinti", gestioneDB.eventiVinti(utente, gestioneDB.mostraEventiChiusi()));
 					req.getRequestDispatcher("utente/menuUtente.jsp").forward(req, resp);
 				} else {
 					HttpSession sessione = req.getSession();
