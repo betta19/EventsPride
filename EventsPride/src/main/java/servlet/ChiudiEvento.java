@@ -31,8 +31,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		lista.add(estraiRandom(e.getListaUtenti()));
 	}
 	db.salvaEsito(e.getId(), lista);
-req.setAttribute("listaEventi", db.mostraEventi());
-req.getRequestDispatcher("admin/chiudiEvento.jsp").forward(req, resp);
+	req.setAttribute("messaggio", "Estrazione andata a buon fine!");
+	req.setAttribute("listaEventi", db.mostraEventi());
+	req.getRequestDispatcher("admin/menuAdmin.jsp").forward(req, resp);
 	}
 public Utente estraiRandom(List<Utente> lista) {
 	 int index = (int) (Math.random() * lista.size());
