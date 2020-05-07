@@ -184,7 +184,7 @@ body, h1,  h3, h4, h5, h6 {
 
 		<div  class="container">
   <div  class="row">
-  <div class="col"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <div class="col" style="margin-top: 40%;">
 <%  String messaggio = (String) request.getAttribute("messaggio"); 
 	if (messaggio != null ){
 		%>

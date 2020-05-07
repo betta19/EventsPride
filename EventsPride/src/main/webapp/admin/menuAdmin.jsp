@@ -79,10 +79,6 @@ body, h1, h2, h3, h4, h5, h6 {
 			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
 			class="fa fa-plus w3-xxlarge"></i>
 			<p>Crea Evento</p>
-		</a> <a href="#Eventi"
-			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
-			class="fa fa-lock w3-xxlarge"></i>
-			<p>Chiudi Evento</p>
 		</a> <a href="#Admin"
 			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
 			class="fa fa-handshake-o w3-xxlarge"></i>
@@ -107,8 +103,7 @@ body, h1, h2, h3, h4, h5, h6 {
 			<a href="#" class="w3-bar-item w3-button"
 				style="width: 25% !important">Profilo</a> <a href="#Eventi"
 				class="w3-bar-item w3-button" style="width: 25% !important">Crea
-				Evento</a> <a href="#Eventi" class="w3-bar-item w3-button"
-				style="width: 25% !important">Chiudi Evento</a> <a href="#Admin"
+				Evento</a><a href="#Admin"
 				class="w3-bar-item w3-button" style="width: 25% !important">Registra
 				Admin</a> <a href="#Lista" class="w3-bar-item w3-button"
 				style="width: 25% !important">Eventi</a>
@@ -135,7 +130,7 @@ body, h1, h2, h3, h4, h5, h6 {
 		<!-- About Section -->
 		<%
 			String mess = (String) request.getAttribute("messaggio");
-			if (mess != null) {
+		if (mess != null) {
 		%>
 		<h4>
 			<%=mess%>
@@ -187,7 +182,6 @@ body, h1, h2, h3, h4, h5, h6 {
 				<!-- Grid for pricing tables -->
 				<h3 class="w3-padding-16 w3-text-light-grey">Eventi</h3>
 				<div class="w3-row-padding" style="margin: 0 -16px">
-					<div class="w3-half w3-margin-bottom">
 						<ul
 							class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
 							<li class="w3-dark-grey w3-xlarge w3-padding-32">Crea Eventi</li>
@@ -199,22 +193,6 @@ body, h1, h2, h3, h4, h5, h6 {
 								</form>
 							</li>
 						</ul>
-					</div>
-
-					<div class="w3-half">
-						<ul
-							class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-							<li class="w3-dark-grey w3-xlarge w3-padding-32">Chiudi
-								Evento</li>
-							<li class="w3-light-grey w3-padding-24">
-								<form action="controllo" method="post">
-									<button
-										class="w3-button w3-white w3-padding-large w3-hover-black"
-										type="submit" name="azione" value="3">Chiudi</button>
-								</form>
-							</li>
-						</ul>
-					</div>
 					<!-- End Grid/Pricing tables -->
 				</div>
 			</div>
@@ -252,6 +230,7 @@ body, h1, h2, h3, h4, h5, h6 {
 									<th>Immagine</th>
 									<th>Stato</th>
 									<th>Rimuovi</th>
+									<th>Estrai vincitori</th>
 									<th>Dettagli</th>
 								</tr>
 
@@ -274,6 +253,33 @@ body, h1, h2, h3, h4, h5, h6 {
 											</form>
 										</td>
 
+										<c:set var="n" value="${evento.getListaUtenti().size()}" />
+										<td>
+										<c:if test="${n>3}">
+												<form action="chiudiEvento" method="post">
+													<select name="numero">
+
+
+														<c:forEach var="i" begin="1" end="3">
+															<option value="<c:out value = "${i}"/>">
+																<c:out value="${i}" /></option>
+														</c:forEach>
+
+
+													</select>
+
+
+													<button type="submit" class="btn btn-warning"
+														name="idEvento" value=<c:out value = "${evento.getId()}"/>>Estrazione
+														</button>
+
+												</form>
+
+
+
+											</c:if>
+											</td>
+
 										<td>
 											<form action="controllo" method="post">
 												<input type="number" hidden="true" name="idEvento"
@@ -282,6 +288,7 @@ body, h1, h2, h3, h4, h5, h6 {
 													class="btn btn-info">Info</button>
 											</form>
 										</td>
+
 									</tr>
 
 								</c:forEach>

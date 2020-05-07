@@ -1,204 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<link href='https://fonts.googleapis.com/css?family=Roboto'
-	rel='stylesheet' type='text/css'>
-<link
-	href='https://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css'
-	rel='stylesheet' type='text/css'>
-
-<head>
-<meta charset="ISO-8859-1">
-<title>aggiungi evento</title>
+ <!DOCTYPE html>
+<html lang="en">
+<title>AggiungiPartita</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-{
-margin
-:
- 
-0;
-padding
-:
- 
-0;
-box-sizing
-:
- 
-border-box
-;
-
-
-}
-html, body {
-	height: 100%;
+input[type=text],[type=number],[type=datetime-local],select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc; 
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-body {
-	font: 14px/1 'Roboto', sans-serif;
-	color: #fff;
-	background: url('https://codepen.io/images/classy_fabric.png') #333;
-	-webkit-font-smoothing: antialiased;
+input[type=submit] {
+  width: 100%;
+  background-color:gray;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-input, select, textarea {
-	font-family: inherit;
-	font-size: 100%;
-	vertical-align: baseline;
-	border: 0;
-	outline: 0;
-	color: #fff;
+input[type=submit]:hover {
+  background-color: teal;
 }
 
-,
-input::-moz-focus-inner {
-	border: 0;
-	padding: 0;
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
-
-textarea {
-	overflow: auto;
-	vertical-align: top;
-	resize: none;
-}
-
-[placeholder]::-webkit-input-placeholder {
-	color: rgba(255, 255, 255, .8);
-}
-
-[placeholder]:hover::-webkit-input-placeholder {
-	color: rgba(255, 255, 255, .4);
-}
-
-[placeholder]:focus::-webkit-input-placeholder {
-	color: transparent;
-}
-
-[placeholder]::-moz-placeholder {
-	color: rgba(255, 255, 255, .8);
-}
-
-[placeholder]:hover::-moz-placeholder {
-	color: rgba(255, 255, 255, .4);
-}
-
-[placeholder]:focus::-moz-placeholder {
-	color: transparent;
-}
-
-[placeholder]:-ms-input-placeholder {
-	color: rgba(255, 255, 255, .8);
-}
-
-[placeholder]:hover:-ms-input-placeholder {
-	color: rgba(255, 255, 255, .4);
-}
-
-[placeholder]:focus:-ms-input-placeholder {
-	color: transparent;
-}
-
-form {
-	width: 400px;
-	margin: 50px auto;
-}
-
-input[type="text"] {
-	display: block;
-	width: 400px;
-	margin: 0 0 20px;
-	padding: 8px 12px 10px 12px;
-	border: 1px solid rgba(0, 0, 0, .5);
-	background: rgba(0, 0, 0, .25);
-}
-
-textarea {
-	display: block;
-	width: 400px;
-	height: 150px;
-	margin: 0 0 20px;
-	padding: 8px 12px 10px 12px;
-	border: 1px solid rgba(0, 0, 0, .5);
-	background: rgba(0, 0, 0, .25);
-}
-
-.radio {
-	position: relative;
-	display: inline-block;
-	margin: 0 20px 20px 0;
-}
-
-.radio input[type="radio"] {
-	vertical-align: middle;
-	opacity: 0;
-}
-
-.radio label {
-	vertical-align: middle;
-	cursor: pointer;
-}
-
-.radio input[type="radio"]+label:before {
-	content: '';
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	margin: -3px 5px 0 -15px;
-	vertical-align: middle;
-	font-size: 14px;
-	font-family: fontawesome;
-	line-height: 19px;
-	text-align: center;
-	border: 1px solid rgba(0, 0, 0, .5);
-	background: rgba(0, 0, 0, .25);
-}
-
-.radio input[type="radio"]+label:before {
-	border-radius: 50%;
-}
-
-.radio input[type="radio"]:hover+label:before {
-	content: '\f111';
-	font-size: 9px;
-	color: rgba(255, 255, 255, .4);
-}
-
-.radio input[type="radio"]:checked+label:before {
-	content: '\f111';
-	font-size: 9px;
-	color: rgba(255, 255, 255, .8);
-}
-
-.radio .sex {
-	font: 20px fontawesome;
-}
-
-input[type="submit"] {
-	display: block;
-	width: 150px;
-	margin: 0 0 20px;
-	padding: 8px 0 10px 0;
-	text-align: center;
-	border: 1px solid rgba(0, 0, 0, .5);
-	background: rgba(0, 0, 0, .25);
-}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
 </style>
-</head>
 <body>
-	<div class="login">
-		<form action="aggiungiEvento" method="post"
-			enctype="multipart/form-data">
-			<label for="nome">Nome evento </label> <br> <br> <input
-				type="text" class="login" id="nome" name="nome"
-				placeholder="Nome evento"> <input type="file" name="image"
-				id="image" placeholder="Inserisci l'immagine dell'evento"> <br>
-			<br> <input type="submit" class="animated" value="Aggiungi">
-		</form>
-
-	</div>
-
+<!-- Header -->
+<header class="w3-container w3-black w3-center" style="padding:32px 16px">
+  <h1 class="w3-margin w3-jumbo">Aggiungi un Evento</h1>
+  <p class="w3-xlarge">Inserisci i dati richiesti per continuare oppure torna indietro</p>
 	<form action="controllo" method="post">
-		<button type="submit" class="btn btn-primary btn-lg btn-block"
-			name="azione" value="4" style="width: 500px; height: 50px;">Indietro</button>
+    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top" name="azione" value="4">Torna Indietro</button>
 	</form>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-container" style="padding-top: 64px; padding-bottom: 64px;">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Inserisci i seguenti dati dati per creare un nuovo evento:</h1>
+		<form action="aggiungiEvento" method="post" enctype="multipart/form-data">
+			<input name="nome" id="nome" type="text" placeholder="Nome Evento">
+			<label for="image">Inserisci l'immagine dell'evento : </label><br>
+			<input name="image" id="image" type="file" placeholder="Foto evento">
+
+			<input type="submit" value="Invia">
+		</form>
+    </div>
+
+    <div class="w3-third w3-center">
+      <img style="width: 380px;" alt="imageCod" src="https://image.winudf.com/v2/image/Y29tLkZpcmV3b3Jrc0xpdmVXYWxscGFwZXJfc2NyZWVuXzJfMTUzODQ3NTc1Ml8wNjE/screen-2.jpg?fakeurl=1&type=.jpg">
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="w3-container w3-padding-35 w3-center w3-black">  
+ <p>Powered by <a href="https://www.instagram.com/thefinalplayer_psn/" target="_blank">thefinalplayer_psn</a></p>
+</footer>
 </body>
 </html>
+
