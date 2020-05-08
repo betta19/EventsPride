@@ -27,7 +27,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 	Utente utente = (Utente) session.getAttribute("Utente");
 	db.aggiungiPartecipante(Long.parseLong(req.getParameter("idEvento")), utente);
 	req.setAttribute("listaEventiAperti", db.controlloIscrizione(utente, db.mostraEventiAperti()));
-	req.setAttribute("eventiPartecipati", db.eventiPartecipati(utente, db.mostraEventi()));
+	req.setAttribute("eventiPartecipati", db.eventiPartecipati(utente));
 	req.setAttribute("eventiVinti", db.eventiVinti(utente, db.mostraEventiChiusi()));
 	req.setAttribute("messaggio", "Ti sei registrato ad un evento!");
 	req.getRequestDispatcher("utente/menuUtente.jsp").forward(req, resp);

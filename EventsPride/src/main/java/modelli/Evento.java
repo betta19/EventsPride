@@ -8,8 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -25,9 +27,13 @@ private Esito esito;
 @Column(columnDefinition = "LONGBLOB NOT NULL")
 private String foto;
 private String stato;
-@OneToMany(fetch = FetchType.EAGER)
-@Column(name="utenti")
+@ManyToMany
+@JoinTable(name="Evento_Utente",
+joinColumns=@JoinColumn(name="Evento_id"),
+inverseJoinColumns=@JoinColumn(name="Utente_id"))
 private List<Utente> listaUtenti;
+
+
 public Evento() {
 	
 }

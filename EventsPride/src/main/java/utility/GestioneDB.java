@@ -120,18 +120,21 @@ public class GestioneDB {
 	public List<Evento> controlloIscrizione (Utente utente, List<Evento> eventi) {
 		List<Evento> lista = new ArrayList<>();
 		for (Evento evento : eventi) {
-			if (!evento.getListaUtenti().contains(utente)) {
+			if (!(evento.getListaUtenti().contains(utente))) {
 				lista.add(evento);
 			}
 		} return lista;
 	}
-	public List<Evento> eventiPartecipati (Utente utente, List<Evento> eventi) {
-		List<Evento> lista = new ArrayList<>();
-		for (Evento evento : eventi) {
-			if (evento.getListaUtenti().contains(utente)) {
-				lista.add(evento);
-			}
-		} return lista;
+	
+	public Utente findUtente(long idUtente) {
+		return  em.find(Utente.class, idUtente);
+	}
+	
+	public List<Evento> eventiPartecipati (Utente utente) {
+		 
+		Utente u=findUtente(utente.getId());
+		
+		 return u.getListaEventi();
 	}
 	public List<Evento> eventiVinti (Utente utente, List<Evento> eventi) {
 		List<Evento> lista = new ArrayList<>();
@@ -141,10 +144,14 @@ public class GestioneDB {
 			}
 		} return lista;
 	} 
+		
+	
 	public boolean aggiungiPartecipante (long idEvento, Utente utente) {
 		Evento e = findEvento(idEvento);
+		Utente u= em.find(Utente.class, utente.getId());
 		em.getTransaction().begin();
-	//	em.persist(utente);
+		//em.persist(utente);
+		u.getListaEventi().add(e);
 		e.getListaUtenti().add(utente);
 		em.getTransaction().commit();
 		return true;

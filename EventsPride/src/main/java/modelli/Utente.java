@@ -1,12 +1,19 @@
 package modelli;
 
 
+
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 
 
 @Entity
@@ -27,6 +34,13 @@ public class Utente {
 	private String foto;
 	@Column(columnDefinition = "boolean default false")
 	private boolean active;
+	@ManyToMany
+	@JoinTable(name="Utente_Evento",
+	joinColumns=@JoinColumn(name="Utente_id"),
+	inverseJoinColumns=@JoinColumn(name="Evento_id"))
+	private List<Evento> listaEventi;
+	
+
 
 
 	public Utente() {
@@ -120,4 +134,15 @@ public class Utente {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+
+	public List<Evento> getListaEventi() {
+		return listaEventi;
+	}
+
+
+	public void setListaEventi(List<Evento> listaEventi) {
+		this.listaEventi = listaEventi;
+	}
+	
 }
