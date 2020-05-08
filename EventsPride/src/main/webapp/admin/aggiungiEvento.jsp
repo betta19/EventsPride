@@ -56,7 +56,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <div class="w3-row-padding w3-container" style="padding-top: 64px; padding-bottom: 64px;">
   <div class="w3-content">
     <div class="w3-twothird">
-      <h1>Inserisci i seguenti dati dati per creare un nuovo evento:</h1>
+      <h1>Inserisci i seguenti dati per creare un nuovo evento:</h1>
 		<form action="aggiungiEvento" method="post" enctype="multipart/form-data">
 			<input name="nome" id="nome" type="text" placeholder="Nome Evento" required="required">
 			<label for="image">Inserisci l'immagine dell'evento : </label><br>
