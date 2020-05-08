@@ -103,10 +103,9 @@ body, h1, h2, h3, h4, h5, h6 {
 			<a href="#" class="w3-bar-item w3-button"
 				style="width: 25% !important">Profilo</a> <a href="#Eventi"
 				class="w3-bar-item w3-button" style="width: 25% !important">Crea
-				Evento</a><a href="#Admin"
-				class="w3-bar-item w3-button" style="width: 25% !important">Registra
-				Admin</a> <a href="#Lista" class="w3-bar-item w3-button"
-				style="width: 25% !important">Eventi</a>
+				Evento</a><a href="#Admin" class="w3-bar-item w3-button"
+				style="width: 25% !important">Registra Admin</a> <a href="#Lista"
+				class="w3-bar-item w3-button" style="width: 25% !important">Eventi</a>
 
 		</div>
 	</div>
@@ -130,7 +129,7 @@ body, h1, h2, h3, h4, h5, h6 {
 		<!-- About Section -->
 		<%
 			String mess = (String) request.getAttribute("messaggio");
-		if (mess != null) {
+			if (mess != null) {
 		%>
 		<h4>
 			<%=mess%>
@@ -182,17 +181,17 @@ body, h1, h2, h3, h4, h5, h6 {
 				<!-- Grid for pricing tables -->
 				<h3 class="w3-padding-16 w3-text-light-grey">Eventi</h3>
 				<div class="w3-row-padding" style="margin: 0 -16px">
-						<ul
-							class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-							<li class="w3-dark-grey w3-xlarge w3-padding-32">Crea Eventi</li>
-							<li class="w3-light-grey w3-padding-24">
-								<form action="controllo" method="post">
-									<button
-										class="w3-button w3-white w3-padding-large w3-hover-black"
-										type="submit" name="azione" value="2">Crea</button>
-								</form>
-							</li>
-						</ul>
+					<ul
+						class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+						<li class="w3-dark-grey w3-xlarge w3-padding-32">Crea Eventi</li>
+						<li class="w3-light-grey w3-padding-24">
+							<form action="controllo" method="post">
+								<button
+									class="w3-button w3-white w3-padding-large w3-hover-black"
+									type="submit" name="azione" value="2">Crea</button>
+							</form>
+						</li>
+					</ul>
 					<!-- End Grid/Pricing tables -->
 				</div>
 			</div>
@@ -254,31 +253,39 @@ body, h1, h2, h3, h4, h5, h6 {
 										</td>
 
 										<c:set var="n" value="${evento.getListaUtenti().size()}" />
-										<td>
-										<c:if test="${n>3}">
-												<form action="chiudiEvento" method="post">
-													<select name="numero">
+										<td><c:if test="${evento.getStato()=='aperto'}">
+												<c:if test="${n>0}">
+													<form action="chiudiEvento" method="post">
+														<select name="numero">
+
+															<c:if test="${n==1}">
+																<c:set var="x" value="1" />
+															</c:if>
+															<c:if test="${n==2}">
+																<c:set var="x" value="2" />
+															</c:if>
+															<c:if test="${n>=3}">
+																<c:set var="x" value="3" />
+															</c:if>
+															<c:forEach var="i" begin="1" end="${x}">
+																<option value="<c:out value = "${i}"/>">
+																	<c:out value="${i}" /></option>
+															</c:forEach>
 
 
-														<c:forEach var="i" begin="1" end="3">
-															<option value="<c:out value = "${i}"/>">
-																<c:out value="${i}" /></option>
-														</c:forEach>
+														</select>
 
 
-													</select>
-
-
-													<button type="submit" class="btn btn-warning"
-														name="idEvento" value=<c:out value = "${evento.getId()}"/>>Estrazione
+														<button type="submit" class="btn btn-warning"
+															name="idEvento"
+															value=<c:out value = "${evento.getId()}"/>>Estrazione
 														</button>
 
-												</form>
+													</form>
 
 
-
-											</c:if>
-											</td>
+												</c:if>
+											</c:if></td>
 
 										<td>
 											<form action="controllo" method="post">

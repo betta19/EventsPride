@@ -153,7 +153,7 @@ public class GestioneDB {
 		
 		u.getListaEventi().add(e);
 		e.getListaUtenti().add(utente);
-		em.persist(utente);
+		//em.persist(utente);
 		em.getTransaction().commit();
 		return true;
 	}

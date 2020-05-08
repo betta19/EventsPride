@@ -33,10 +33,56 @@ public class Utente {
 	@ManyToMany
 	@JoinTable(name = "Utente_Evento", joinColumns = @JoinColumn(name = "Utente_id"), inverseJoinColumns = @JoinColumn(name = "Evento_id"))
 	private List<Evento> listaEventi;
-	
+	@ManyToMany
+	@JoinTable(name = "Utente_Esito", joinColumns = @JoinColumn(name = "Utente_id"), inverseJoinColumns = @JoinColumn(name = "Esito_id"))
+	private List<Esito> listaEsito;
 
 	public Utente() {
 
+	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Utente other = (Utente) obj;
+		if (id != other.id)
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
+
+
+
+	public List<Esito> getListaEsito() {
+		return listaEsito;
+	}
+
+
+
+	public void setListaEsito(List<Esito> listaEsito) {
+		this.listaEsito = listaEsito;
 	}
 
 
