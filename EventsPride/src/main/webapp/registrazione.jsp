@@ -17,28 +17,28 @@
 		<form action="registrazione" method="post" enctype="multipart/form-data">				
 		<p>Inserisci le tue credenziali</p>
 					<p>
-						<label>USERNAME</label><br>
-							<input type="text" name="user" class="user" placeholder="Username">
+						<label>Username</label><br>
+							<input type="text" name="user" class="user" placeholder="Username" required="required">
 					</p>
 					<p>
-						<label>NOME</label><br>
-							<input type="text" name="nome" class="nome" placeholder="Nome">
+						<label>Nome</label><br>
+							<input type="text" name="nome" class="nome" placeholder="Nome" required="required">
 					</p>
 					<p>
-						<label>COGNOME</label><br>
-							<input type="text" name="cognome" class="cognome" placeholder="Cognome">
+						<label>Cognome</label><br>
+							<input type="text" name="cognome" class="cognome" placeholder="Cognome" required="required">
 					</p>
 					<p>
-						<label>EMAIL</label><br>
-							<input type="email" name="email" class="email" placeholder="email@gmail.com">
+						<label>Email</label><br>
+							<input type="email" name="email" class="email" placeholder="email@gmail.com" required="required">
 					</p>
 					<p>
-						<label>PASSWORD</label><br>
-							<input type="Password" name="password" class="password" placeholder="Password">
+						<label>Password</label><br>
+							<input type="Password" name="password" class="password" placeholder="Password" required="required">
 					</p>
 					<p>
-						<label>IMMAGINE PROFILO</label><br>
-							<input type="file" name="image" class="image" placeholder="Inserisci immagine">
+						<label>Immagine Profilo</label><br>
+							<input type="file" name="image" class="image" placeholder="Inserisci immagine" required="required">
 					</p>
         <button class="btn btn-info btn-lg btn-block" type="submit"style="width:200px; height:30px;margin:auto;">Registrati</button><br><br>			
          <input type="hidden" id="tipo" name="tipo" value="<c:out value="${tipo}" />">

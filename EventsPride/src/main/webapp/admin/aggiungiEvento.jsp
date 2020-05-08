@@ -49,9 +49,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <header class="w3-container w3-black w3-center" style="padding:32px 16px">
   <h1 class="w3-margin w3-jumbo">Aggiungi un Evento</h1>
   <p class="w3-xlarge">Inserisci i dati richiesti per continuare oppure torna indietro</p>
-	<form action="controllo" method="post">
-    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top" name="azione" value="4">Torna Indietro</button>
-	</form>
+	
 </header>
 
 <!-- First Grid -->
@@ -60,12 +58,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <div class="w3-twothird">
       <h1>Inserisci i seguenti dati dati per creare un nuovo evento:</h1>
 		<form action="aggiungiEvento" method="post" enctype="multipart/form-data">
-			<input name="nome" id="nome" type="text" placeholder="Nome Evento">
+			<input name="nome" id="nome" type="text" placeholder="Nome Evento" required="required">
 			<label for="image">Inserisci l'immagine dell'evento : </label><br>
-			<input name="image" id="image" type="file" placeholder="Foto evento">
+			<input name="image" id="image" type="file"  placeholder="Foto evento" required="required">
 
-			<input type="submit" value="Invia">
+			<input type="submit" value="Aggiungi">
 		</form>
+		<form action="controllo" method="post">
+    <button class="w3-button w3-teal w3-padding-large w3-large w3-margin-top" name="azione" value="4">Torna Indietro</button>
+	</form>
     </div>
 
     <div class="w3-third w3-center">

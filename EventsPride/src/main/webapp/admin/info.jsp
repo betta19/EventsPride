@@ -60,7 +60,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <h2>Nome Evento: <c:out value="${evento.getNome()}" /></h2><br>	
           <p><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>Data apertura: <c:out value="${evento.getDataApertura()}" /></p>
           <p><i class="fa fa-group fa-fw w3-margin-right w3-large w3-text-teal"></i>Numero Partecipanti: <c:out value="${evento.getListaUtenti().size()}" /> </p>
-          <p><i class="fa fa-trophy fa-fw w3-margin-right w3-large w3-text-teal"></i>Vincitori: <c:forEach items="${evento.getEsito().getUtentiScelti()}" var="listaVincitori"><c:out value="${listaVincitori.getUsername()}" /> <br></c:forEach></p>
+          <p><i class="fa fa-trophy fa-fw w3-margin-right w3-large w3-text-teal"></i>Vincitori: <p> </p> <c:forEach items="${evento.getEsito().getUtentiScelti()}" var="listaVincitori"><c:out value="${listaVincitori.getUsername()}" /> <br></c:forEach></p>
 		<br>
 		<form action="controllo" method="post">
 	      <button type="submit" class="button1" name="azione" value="4">Indietro</button>
