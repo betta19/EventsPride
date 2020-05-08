@@ -150,9 +150,10 @@ public class GestioneDB {
 		Evento e = findEvento(idEvento);
 		Utente u= em.find(Utente.class, utente.getId());
 		em.getTransaction().begin();
-		//em.persist(utente);
+		
 		u.getListaEventi().add(e);
 		e.getListaUtenti().add(utente);
+		em.persist(utente);
 		em.getTransaction().commit();
 		return true;
 	}
