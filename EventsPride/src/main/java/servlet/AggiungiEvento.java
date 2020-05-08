@@ -23,7 +23,7 @@ import modelli.Utente;
 import utility.GestioneDB;
 
 @MultipartConfig
-@WebServlet(urlPatterns = { "/admin/aggiungiEvento", "/aggiungiEvento" })
+@WebServlet(name = "aggiungiEvento", urlPatterns = { "/admin/aggiungiEvento"})
 public class AggiungiEvento extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import modelli.Utente;
 import utility.GestioneDB;
 
-@WebServlet(name = "partecipa", urlPatterns = { "/partecipa", "/utente/partecipa"})
+@WebServlet(name = "partecipa", urlPatterns = {"/utente/partecipa"})
 public class Partecipa extends HttpServlet{
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

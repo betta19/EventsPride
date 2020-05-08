@@ -18,7 +18,7 @@ import modelli.Evento;
 import modelli.Utente;
 import utility.GestioneDB;
 
-@WebServlet(name = "chiudiEvento", urlPatterns = { "/chiudiEvento" })
+@WebServlet(name = "chiudiEvento", urlPatterns = { "/admin/chiudiEvento" })
 public class ChiudiEvento extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

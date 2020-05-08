@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import modelli.Utente;
 import utility.GestioneDB;
 
-@WebServlet(name = "controllo", urlPatterns = { "/controllo" })
+@WebServlet(name = "controllo", urlPatterns = { "/controllo", "/admin/controllo" })
 
 public class ControlloAzione extends HttpServlet {
 
