@@ -88,7 +88,7 @@ body, h1, h2, h3, h4, h5, h6 {
 			class="fa fa-eye w3-xxlarge"></i>
 			<p>Lista Eventi</p>
 		</a>
-		<form action="controllo" method="post">
+		<form action="<%=request.getContextPath()%>/admin/controlloAdmin" method="post">
 			<button class="button button4 fa fa-mail-reply w3-large "
 				type="submit" name="azione" value="1">
 				<p style="font-family: serif;">Logout</p>
@@ -161,23 +161,7 @@ body, h1, h2, h3, h4, h5, h6 {
 				<c:out value="${sessionScope.Utente.getMail()}" />
 			</p>
 			<br>
-			<div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
-				<div class="w3-quarter w3-section">
-					<span class="w3-xlarge">11+</span><br> Partners
-				</div>
-				<div class="w3-quarter w3-section">
-					<span class="w3-xlarge">55+</span><br> Projects Done
-				</div>
-				<div class="w3-quarter w3-section">
-					<span class="w3-xlarge">89+</span><br> Happy Clients
-				</div>
-				<div class="w3-quarter w3-section">
-					<span class="w3-xlarge">150+</span><br> Meetings
-				</div>
-			</div>
-
-
-			<div id="Eventi">
+     			<div id="Eventi">
 				<!-- Grid for pricing tables -->
 				<h3 class="w3-padding-16 w3-text-light-grey">Eventi</h3>
 				<div class="w3-row-padding" style="margin: 0 -16px">
@@ -185,7 +169,7 @@ body, h1, h2, h3, h4, h5, h6 {
 						class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
 						<li class="w3-dark-grey w3-xlarge w3-padding-32">Crea Eventi</li>
 						<li class="w3-light-grey w3-padding-24">
-							<form action="controllo" method="post">
+							<form action="<%=request.getContextPath()%>/admin/controlloAdmin" method="post">
 								<button
 									class="w3-button w3-white w3-padding-large w3-hover-black"
 									type="submit" name="azione" value="2">Crea</button>
@@ -204,7 +188,7 @@ body, h1, h2, h3, h4, h5, h6 {
 						<li class="w3-dark-grey w3-xlarge w3-padding-32">Aggiungi
 							admin</li>
 						<li class="w3-light-grey w3-padding-24">
-							<form action="controllo" method="post">
+							<form action="<%=request.getContextPath()%>/admin/controlloAdmin" method="post">
 								<input type="hidden" id="tipo" name="tipo" value="admin">
 								<button
 									class="w3-button w3-white w3-padding-large w3-hover-black"
@@ -244,7 +228,7 @@ body, h1, h2, h3, h4, h5, h6 {
 											style="width: 45px; height: 45px; margin: auto"></td>
 										<td><c:out value="${evento.getStato()}" /></td>
 										<td>
-											<form action="controllo" method="post">
+											<form action="<%=request.getContextPath()%>/admin/controlloAdmin" method="post">
 												<input type="number" hidden="true" name="idEvento"
 													value=<c:out value = "${evento.getId()}"/>>
 												<button type="submit" name="azione" value="5"
@@ -288,7 +272,7 @@ body, h1, h2, h3, h4, h5, h6 {
 											</c:if></td>
 
 										<td>
-											<form action="controllo" method="post">
+											<form action="<%=request.getContextPath()%>/admin/controlloAdmin" method="post">
 												<input type="number" hidden="true" name="idEvento"
 													value=<c:out value = "${evento.getId()}"/>>
 												<button type="submit" name="azione" value="6"

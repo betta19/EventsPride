@@ -30,6 +30,6 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 	req.setAttribute("eventiPartecipati", db.eventiPartecipati(utente));
 	req.setAttribute("eventiVinti", db.eventiVinti(utente, db.mostraEventiChiusi()));
 	req.setAttribute("messaggio", "Ti sei registrato ad un evento!");
-	req.getRequestDispatcher("utente/menuUtente.jsp").forward(req, resp);
+	req.getRequestDispatcher("/utente/menuUtente.jsp").forward(req, resp);
 	}
 }

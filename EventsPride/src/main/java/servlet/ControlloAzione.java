@@ -4,6 +4,7 @@ import java.io.IOException;
 
 
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.RollbackException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import modelli.Utente;
 import utility.GestioneDB;
 
-@WebServlet(name = "controllo", urlPatterns = { "/controllo", "/admin/controllo" })
+@WebServlet(name = "controlloAdmin", urlPatterns = { "/admin/controlloAdmin","/utente/controlloAdmin","/controlloAdmin"})
 
 public class ControlloAzione extends HttpServlet {
 
@@ -30,39 +31,49 @@ public class ControlloAzione extends HttpServlet {
 			switch (azione) {
 			case 0: {
 				req.setAttribute("tipo", req.getParameter("tipo"));
-				req.getRequestDispatcher("registrazione.jsp").forward(req, resp);
+				req.getRequestDispatcher("/admin/registrazione.jsp").forward(req, resp);
 				break;
 			}
 			case 1: {
 				sessione.invalidate();
-				req.getRequestDispatcher("login.jsp").forward(req, resp);
+				req.getRequestDispatcher("/login.jsp").forward(req, resp);
 				break;
 
 			}
 			case 2: {
-				req.getRequestDispatcher("admin/aggiungiEvento.jsp").forward(req, resp);
+				req.getRequestDispatcher("/admin/aggiungiEvento.jsp").forward(req, resp);
 				break;
 			}
 			case 3: {
 				req.setAttribute("listaEventi", gestioneDB.mostraEventiAperti());
-				req.getRequestDispatcher("admin/chiudiEvento.jsp").forward(req, resp);
+				req.getRequestDispatcher("/admin/chiudiEvento.jsp").forward(req, resp);
 				break;
 			}
 			case 4: {
 				req.setAttribute("listaEventi", gestioneDB.mostraEventi());
-				req.getRequestDispatcher("admin/menuAdmin.jsp").forward(req, resp);
+				req.getRequestDispatcher("/admin/menuAdmin.jsp").forward(req, resp);
 				break;
 			}
 			case 5: {
+				try {
 				gestioneDB.rimuoviEvento(Long.parseLong(req.getParameter("idEvento")));
+
+				} catch (RollbackException e) {
+					
+					req.setAttribute("messaggio", "Impossibile rimuovere l'evento");
+					req.setAttribute("listaEventi", gestioneDB.mostraEventi());
+					req.getRequestDispatcher("/admin/menuAdmin.jsp").forward(req, resp);
+					break;
+					
+				}
 				req.setAttribute("messaggio", "Evento rimosso");
 				req.setAttribute("listaEventi", gestioneDB.mostraEventi());
-				req.getRequestDispatcher("admin/menuAdmin.jsp").forward(req, resp);
+				req.getRequestDispatcher("/admin/menuAdmin.jsp").forward(req, resp);
 				break;
 			}
 			case 6: {
 				req.setAttribute("evento", gestioneDB.findEvento(Long.parseLong(req.getParameter("idEvento"))));
-				req.getRequestDispatcher("admin/info.jsp").forward(req, resp);
+				req.getRequestDispatcher("/admin/info.jsp").forward(req, resp);
 				break;
 			}
 			}

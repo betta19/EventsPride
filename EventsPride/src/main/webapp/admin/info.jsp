@@ -62,7 +62,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p><i class="fa fa-group fa-fw w3-margin-right w3-large w3-text-teal"></i>Numero Partecipanti: <c:out value="${evento.getListaUtenti().size()}" /> </p>
           <p><i class="fa fa-trophy fa-fw w3-margin-right w3-large w3-text-teal"></i>Vincitori: <p> </p> <c:forEach items="${evento.getEsito().getUtentiScelti()}" var="listaVincitori"><c:out value="${listaVincitori.getUsername()}" /> <br></c:forEach></p>
 		<br>
-		<form action="controllo" method="post">
+		<form action="<%=request.getContextPath()%>/admin/controlloAdmin" method="post">
 	      <button type="submit" class="button1" name="azione" value="4">Indietro</button>
 		</form>
 		<br>

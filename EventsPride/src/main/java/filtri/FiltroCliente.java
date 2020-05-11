@@ -35,14 +35,14 @@ public class FiltroCliente implements Filter {
 		HttpSession session = (HttpSession) req.getSession();
 		Utente utente = (Utente) session.getAttribute("Utente");
 
-		boolean loggedIn = session != null && utente.getMail() != null && utente.getTipo().equals("Utente");
+		boolean loggedIn = session != null && utente.getTipo().equals("utente");
 		boolean loginRequest = req.getRequestURI().equals(loginURI);
 
 		if (loggedIn || loginRequest) {
 			System.out.println("sono nel filtro");
 			chain.doFilter(request, response);
 		} else {
-			System.out.println("fabio72");
+			System.out.println("fabio7");
 			resp.sendRedirect(loginURI);
 		}
 	}

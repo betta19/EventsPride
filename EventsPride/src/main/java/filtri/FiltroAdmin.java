@@ -34,7 +34,7 @@ public class FiltroAdmin implements Filter {
         HttpSession session = (HttpSession) req.getSession();
         Utente utente = (Utente) session.getAttribute("Utente");
 
-        boolean loggedIn = session != null && utente.getMail() != null && utente.getTipo().equals("admin");
+        boolean loggedIn = session != null && utente.getTipo().equals("admin");
         boolean loginRequest = req.getRequestURI().equals(loginURI);
 
         if (loggedIn || loginRequest) {

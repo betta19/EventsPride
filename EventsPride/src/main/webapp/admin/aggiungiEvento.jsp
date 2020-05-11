@@ -64,7 +64,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
 			<input type="submit" value="Aggiungi">
 		</form>
-		<form action="controllo" method="post">
+		<form action="<%=request.getContextPath()%>/admin/controlloAdmin" method="post">
     <button class="w3-button w3-teal w3-padding-large w3-large w3-margin-top" name="azione" value="4">Torna Indietro</button>
 	</form>
     </div>

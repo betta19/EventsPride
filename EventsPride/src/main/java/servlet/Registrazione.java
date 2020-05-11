@@ -20,7 +20,7 @@ import utility.Crittografia;
 import utility.Email;
 import utility.GestioneDB;
 @MultipartConfig
-@WebServlet(name = "registrazione", urlPatterns = "/registrazione")
+@WebServlet(name = "registrazione", urlPatterns = {"/registrazione","/utente/registrazione", "/admin/registrazione"})
 public class Registrazione extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -67,7 +67,7 @@ public class Registrazione extends HttpServlet {
 				} else {
 					req.setAttribute("messaggio", "Admin aggiunto");
 					req.setAttribute("listaEventi", gestioneDB.mostraEventi());
-					req.getRequestDispatcher("admin/menuAdmin.jsp").forward(req, resp);
+					req.getRequestDispatcher("/admin/menuAdmin.jsp").forward(req, resp);
 				}
 				
 			}

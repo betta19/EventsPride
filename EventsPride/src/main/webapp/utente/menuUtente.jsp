@@ -188,7 +188,7 @@ body, h1, h2, h3, h4, h5, h6 {
 											style="width: 45px; height: 45px; margin: auto"></td>
 										
 										<td>
-											<form action="partecipa" method="post">
+											<form action="<%=request.getContextPath()%>/utente/partecipa" method="post">
 												<input type="number" hidden="true" name="idEvento"
 													value=<c:out value = "${evento.getId()}"/>>
 												<button type="submit"
