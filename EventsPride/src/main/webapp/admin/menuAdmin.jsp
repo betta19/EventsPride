@@ -239,7 +239,7 @@ body, h1, h2, h3, h4, h5, h6 {
 										<c:set var="n" value="${evento.getListaUtenti().size()}" />
 										<td><c:if test="${evento.getStato()=='aperto'}">
 												<c:if test="${n>0}">
-													<form action="chiudiEvento" method="post">
+													<form action="<%=request.getContextPath()%>/admin/chiudiEvento" method="post">
 														<select name="numero">
 
 															<c:if test="${n==1}">

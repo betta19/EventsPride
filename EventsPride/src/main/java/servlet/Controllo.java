@@ -36,7 +36,7 @@ public class Controllo extends HttpServlet {
 			}
 			case 1: {
 				sessione.invalidate();
-				req.getRequestDispatcher("login.jsp").forward(req, resp);
+				req.getRequestDispatcher("/login.jsp").forward(req, resp);
 				break;
 
 			}

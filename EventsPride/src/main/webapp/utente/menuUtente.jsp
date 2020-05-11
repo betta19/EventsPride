@@ -88,7 +88,8 @@ body, h1, h2, h3, h4, h5, h6 {
 			class="fa fa-child w3-xxlarge"></i>
 			<p>Estrazioni</p>
 		</a>
-		<form action="controllo" method="post">
+		<form action="<%=request.getContextPath()%>/utente/controllo"
+			method="post">
 			<button class="button button4 fa fa-mail-reply w3-large "
 				type="submit" name="azione" value="1">
 				<p style="font-family: serif;">Logout</p>
@@ -102,9 +103,10 @@ body, h1, h2, h3, h4, h5, h6 {
 			class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
 			<a href="#" class="w3-bar-item w3-button"
 				style="width: 25% !important">Profilo</a> <a href="#Partecipa"
-				class="w3-bar-item w3-button" style="width: 25% !important">Partecipa</a><a href="#Partecipazioni"
-				class="w3-bar-item w3-button" style="width: 25% !important">Partecipazioni
-				</a> <a href="#ListaEstratto" class="w3-bar-item w3-button"
+				class="w3-bar-item w3-button" style="width: 25% !important">Partecipa</a><a
+				href="#Partecipazioni" class="w3-bar-item w3-button"
+				style="width: 25% !important">Partecipazioni </a> <a
+				href="#ListaEstratto" class="w3-bar-item w3-button"
 				style="width: 25% !important">Estrazioni</a>
 
 		</div>
@@ -129,7 +131,7 @@ body, h1, h2, h3, h4, h5, h6 {
 		<!-- About Section -->
 		<%
 			String mess = (String) request.getAttribute("messaggio");
-		if (mess != null) {
+			if (mess != null) {
 		%>
 		<h4>
 			<%=mess%>
@@ -165,7 +167,8 @@ body, h1, h2, h3, h4, h5, h6 {
 
 			<div id="Partecipa">
 				<!-- Grid for pricing tables -->
-					<h3 class="w3-padding-16 w3-text-light-grey">Partecipa ad un evento</h3>
+				<h3 class="w3-padding-16 w3-text-light-grey">Partecipa ad un
+					evento</h3>
 				<div class="container">
 					<div class="row">
 						<div class="col">
@@ -174,7 +177,7 @@ body, h1, h2, h3, h4, h5, h6 {
 									<th>Nome</th>
 									<th>Immagine</th>
 									<th>Partecipa</th>
-				
+
 								</tr>
 
 								<c:forEach items="${listaEventiAperti}" var="evento">
@@ -186,24 +189,27 @@ body, h1, h2, h3, h4, h5, h6 {
 										<td><img alt="immagine"
 											src="data:image/jpg;base64, <c:out value = "${evento.getFoto()}"/>"
 											style="width: 45px; height: 45px; margin: auto"></td>
-										
+
 										<td>
-											<form action="<%=request.getContextPath()%>/utente/partecipa" method="post">
+											<form action="<%=request.getContextPath()%>/utente/partecipa"
+												method="post">
 												<input type="number" hidden="true" name="idEvento"
 													value=<c:out value = "${evento.getId()}"/>>
-												<button type="submit"
-													class="btn btn-danger">Partecipa</button>
+												<button type="submit" class="btn btn-danger">Partecipa</button>
 											</form>
 										</td>
-										</tr>
-				</c:forEach>
-					<!-- End Grid/Pricing tables -->
-					</table>
+									</tr>
+								</c:forEach>
+								<!-- End Grid/Pricing tables -->
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div id="Partecipazioni">
 				<!-- Grid for pricing tables -->
-					<h3 class="w3-padding-16 w3-text-light-grey">Eventi a cui hai partecipato</h3>
+				<h3 class="w3-padding-16 w3-text-light-grey">Eventi a cui hai
+					partecipato</h3>
 				<div class="container">
 					<div class="row">
 						<div class="col">
@@ -225,65 +231,66 @@ body, h1, h2, h3, h4, h5, h6 {
 										<td><img alt="immagine"
 											src="data:image/jpg;base64, <c:out value = "${evento.getFoto()}"/>"
 											style="width: 45px; height: 45px; margin: auto"></td>
-										
-										<td>
 
-										<c:out value="${evento.getListaUtenti().size()}" /> 
+										<td><c:out value="${evento.getListaUtenti().size()}" />
 										</td>
 										<td><c:out value="${evento.getDataApertura()}" /></td>
 										<td><c:out value="${evento.getStato()}" /></td>
-										</tr>
-										</c:forEach>
-											</table>
-					<!-- End Grid/Pricing tables -->
-				</div>
-			</div>
-			<br>
-
-			<!-- Testimonials -->
-			<div id="EventoEstratto">
-				<h3 class="w3-padding-16 w3-text-light-grey">Eventi in cui sei stato estratto</h3>
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<table class="table table-striped table-dark">
-								<tr>
-									<th>Nome</th>
-									<th>Immagine</th>
-								
-								</tr>
-
-								<c:forEach items="${eventiVinti}" var="evento">
-
-									<tr>
-										<td><c:out value="${evento.getNome()}" /></td>
-
-
-										<td><img alt="immagine"
-											src="data:image/jpg;base64, <c:out value = "${evento.getFoto()}"/>"
-											style="width: 45px; height: 45px; margin: auto"></td>
-							
 									</tr>
-
 								</c:forEach>
-
 							</table>
+							<!-- End Grid/Pricing tables -->
 						</div>
 					</div>
+					<br>
+
+					<!-- Testimonials -->
+					<div id="EventoEstratto">
+						<h3 class="w3-padding-16 w3-text-light-grey">Eventi in cui
+							sei stato estratto</h3>
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<table class="table table-striped table-dark">
+										<tr>
+											<th>Nome</th>
+											<th>Immagine</th>
+
+										</tr>
+
+										<c:forEach items="${eventiVinti}" var="evento">
+
+											<tr>
+												<td><c:out value="${evento.getNome()}" /></td>
+
+
+												<td><img alt="immagine"
+													src="data:image/jpg;base64, <c:out value = "${evento.getFoto()}"/>"
+													style="width: 45px; height: 45px; margin: auto"></td>
+
+											</tr>
+
+										</c:forEach>
+
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Footer -->
+					<footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+						<i class="fa fa-instagram w3-hover-opacity"></i>
+						<p class="w3-medium">
+							Powered by <a href="https://www.instagram.com/giuseppescalesse/"
+								target="_blank" class="w3-hover-text-green">La_Casa_di_Peppe.</a>
+						</p>
+						<!-- End footer -->
+					</footer>
+
+					<!-- END PAGE CONTENT -->
 				</div>
-
-				<!-- Footer -->
-				<footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-					<i class="fa fa-instagram w3-hover-opacity"></i>
-					<p class="w3-medium">
-						Powered by <a href="https://www.instagram.com/giuseppescalesse/"
-							target="_blank" class="w3-hover-text-green">La_Casa_di_Peppe.</a>
-					</p>
-					<!-- End footer -->
-				</footer>
-
-				<!-- END PAGE CONTENT -->
 			</div>
 		</div>
+	</div>
 </body>
 </html>
